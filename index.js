@@ -1,6 +1,7 @@
 import {html} from 'htm/preact'
 import Hello from './Hello.js'
 import {Icon} from '@iconify/react'
+import {Logo, X, Youtube, Instagram} from './Logo.js'
 
 export default function App(){
     return html`
@@ -39,8 +40,21 @@ export default function App(){
       </main>
 
       <footer class="c-80 ta-c py-5 bdt-10px_solid_#ccc px-0.5 bg-hsl(212_100%_6%)">
-          <div class="ta-c"><span class="d-ib tf-scaleX(-1)">\u00A9</span> <span class="mt-5 mb-1"> a<abbr class="d-ib px-0.3 fs-i c-hsl(212_100%_46%)" title="one who attempts or ventures">pirate</abbr><span class="c-hsl(50_100%_50%)">iland</span></span> since et list 1187</div>
+         <nav class="fz-2.4 d-f gp-0.8 pc-c">
+            ${[
+              {u:'https://x.com/OukrainaHQ',i:X},
+              {u:'https://youtube.com/@OukrainaHQ',i:Youtube},
+              {u:'https://www.instagram.com/OukrainaHQ',i:Instagram},
+
+              ].map(v => html`<a class="p-0.4 bc-hsl(50_100%_17%) bR-5 o-0.8 c-w [:hover]:o-1" href="${v.u}"><${v.i}/></a>`)}
+          </nav>
+
+          <div class="ta-c mt-3">
+            <span class="d-ib tf-scaleX(-1)">\u00A9</span> <span class="mt-5 mb-1"> a<abbr class="d-ib px-0.3 fs-i c-hsl(212_100%_46%)" title="one who attempts or ventures">pirate</abbr><span class="c-hsl(50_100%_50%)">iland</span></span> since et list 1187
+          </div>
+
           <div class="c-60 mt-1">with ❤️ to earth</div>
+
           <div class="d-ib fz-1.5 ff-1 mt-2 c-40">
             <${Hello}/>
           </div>
