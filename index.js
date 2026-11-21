@@ -73,7 +73,7 @@ export default function App(){
               </div>
 
             <div class="fz-1.5 ff-monospace c-20">
-              ${copied ? 'copied!' : 'try in any LLM'}
+              ${copied ? 'copied!' : 'try in AI Mode, ChatGPT or Claude'}
             </div>
             </div>
 
