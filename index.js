@@ -1,7 +1,7 @@
 import {html} from 'htm/preact'
 import Hello from './Hello.js'
 import {Icon} from '@iconify/react'
-import {Logo, X, Youtube, Instagram} from './Logo.js'
+import {Logo, X, Youtube, Instagram, GitHub} from './Logo.js'
 import { useState, useEffect} from 'react'
 
 const COMMANDS = [
@@ -11,7 +11,6 @@ const COMMANDS = [
   'винаходити майбутнє сьогодні',
   'проєктувати простір для життя',
   'перетворювати мрії на інфраструктуру',
-  'будувати свободу без дозволу'
 ]
 const INTERVAL_MS = 4000 // Change every 4 seconds
 
@@ -106,9 +105,9 @@ export default function App(){
          <nav class="fz-2.4 d-f gp-0.8 pc-c">
             ${[
               {u:'https://x.com/OukrainaHQ',i:X},
-              {u:'https://youtube.com/@OukrainaHQ',i:Youtube},
+              {u:'https://github.com/Oukraina',i:GitHub},
               {u:'https://www.instagram.com/OukrainaHQ',i:Instagram},
-
+              // {u:'https://youtube.com/@OukrainaHQ',i:Youtube},
               ].map(v => html`<a class="p-0.4 bc-hsl(50_100%_17%) bR-5 o-0.8 c-w [:hover]:o-1" href="${v.u}"><${v.i}/></a>`)}
           </nav>
 
