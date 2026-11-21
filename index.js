@@ -2,18 +2,81 @@ import {html} from 'htm/preact'
 import Hello from './Hello.js'
 import {Icon} from '@iconify/react'
 import {Logo, X, Youtube, Instagram} from './Logo.js'
+import { useState, useEffect} from 'react'
+
+const COMMANDS = [
+  'запускати геніальні дурниці',
+  'будувати ноосферу власноруч',
+  'перетворювати хаос на сенс',
+  'винаходити майбутнє сьогодні',
+  'проєктувати простір для життя',
+  'перетворювати мрії на інфраструктуру',
+  'будувати свободу без дозволу'
+]
+const INTERVAL_MS = 4000 // Change every 4 seconds
 
 export default function App(){
-    return html`
+ const [index, setIndex] = useState(0)
+  const [copied, setCopied] = useState(false)
+
+  const fullCommand = `sudo Oukraina \`${COMMANDS[index]}\``
+
+  useEffect(() => {
+    // Pause rotation while the "copied!" confirmation is showing
+    if (copied) return
+
+    const timer = setInterval(() => {
+      setIndex((prev) => {
+        if (COMMANDS.length <= 1) return 0
+        let next
+        do {
+          next = Math.floor(Math.random() * COMMANDS.length)
+        } while (next === prev) // Guarantees a different phrase every tick
+        return next
+      })
+    }, INTERVAL_MS)
+
+    return () => clearInterval(timer)
+  }, [copied])
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(fullCommand)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
+
+  return html`
      <div>
       <main class="px-0.5">
           <section style="background-image:url(./image_c8cfd0f2.jpg)" class="mnh-100vh d-f pi-c pc-c pn-r bg-url()_center/cover_no-repeat_hsl(50_100%_40%) ta-c mx--0.5">
-            <div class="pb-5">
+            <div class="pb-5 px-0.5">
               <h1 class="fz-5 s:fz-15 lh-1 c-hsl(212_100%_16%)">Oukraina</h1>
               <h2 class="c-20 fs-i fw-3 mt-2">art of the states technology</h2>
+
+              <div class="mt-4 bg-hsla(212_100%_16%/95%) py-1 px-2 bR-1 o-0.9 d-if">
+                <h3 class="d-f gp-2 fw-1 fz-1.5 ff-monospace pi-c">
+                  ${fullCommand}
+                  <button
+                    onClick=${handleCopy}
+                    aria-label="Copy command"
+                    class="bg-hsl(50_100%_40%) b-n cu-p o-0.9 [:hover]:o-1 p-1 bR-1 fz-3"
+                    style="appearance: none"
+                  >
+                    <${Icon} icon=${copied ? 'mdi:check' : 'mdi:content-copy'} />
+                  </button>
+                </h3>
+              </div>
+
+            <div class="fz-1.5 ff-monospace c-20">
+              ${copied ? 'copied!' : 'try in any LLM'}
+            </div>
             </div>
 
-            <div class="pn-a i-80vh_0_0_0 bg-hsl(212_100%_16%) d-f pi-c pc-c"></div>
+            <div class="pn-a i-95vh_0_0_0 bg-hsl(212_100%_16%) d-f pi-c pc-c"></div>
 
             <div class=" ta-right pn-f i-0_0_75vh_0">
               <a class="d-ib fz-2 p-1" href="mailto:vi@oukraina.com"><${Icon} icon="mdi:envelope"/></a>
