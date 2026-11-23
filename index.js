@@ -113,6 +113,14 @@ export default function App(){
               ].map(v => html`<a class="p-0.4 bc-hsl(50_100%_17%) bR-5 o-0.8 c-w [:hover]:o-1" href="${v.u}"><${v.i}/></a>`)}
           </nav>
 
+
+          <div class="mt-2">
+            <a href="http://next.oukraina.com" class="o-0.5" target="_blank" rel="noopener noreferrer">
+              <span>next</span>
+              <span>://oukraina.com</span>
+            </a>
+          </div>
+
           <div class="ta-c mt-3">
             <span class="d-ib tf-scaleX(-1)">\u00A9</span> <span class="mt-5 mb-1"> a<abbr class="d-ib px-0.3 fs-i c-hsl(212_100%_46%)" title="one who attempts or ventures">pirate</abbr><span class="c-hsl(50_100%_50%)">iland</span></span> since et list 1187
           </div>
@@ -122,6 +130,7 @@ export default function App(){
           <div class="d-ib fz-1.5 ff-1 mt-2 c-40">
             <${Hello}/>
           </div>
+
       </footer>
 </div>
     `
