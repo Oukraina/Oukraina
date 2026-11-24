@@ -20,7 +20,7 @@ export default function App(){
  const [index, setIndex] = useState(0)
   const [copied, setCopied] = useState(false)
 
-  const fullCommand = `sudo Oukraina do "${COMMANDS[index]}" --no-explain --lang=en`
+  const fullCommand = `sudo Oukraina run "${COMMANDS[index]}" --no-explain --lang=en`
 
   useEffect(() => {
     // Pause rotation while the "copied!" confirmation is showing
